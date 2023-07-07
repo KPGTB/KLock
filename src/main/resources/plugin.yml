@@ -1,0 +1,8 @@
+name: KLock
+version: '${project.version}'
+main: pl.kpgtb.klock.KLock
+api-version: 1.14
+depend: [KTools]
+authors: [KPG_TB]
+description: An advanced locks system
+website: kpgtb.pl

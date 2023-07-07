@@ -1,0 +1,27 @@
+item:
+  key:
+    keyName: "<gold>Key"
+    keyLoreAssigned:
+      - "<yellow>This key is assigned to object"
+      - "<yellow>Location: <location>"
+    keyLoreNotAssigned:
+      - "<yellow>You can assign this key to new lock"
+  universalKey:
+    ukeyName: "<gold><b>Universal key"
+    ukeyLore:
+      - "<yellow><b>With this key, you can unlock every container or openable block"
+  lock:
+    lockName: "<gold>Lock"
+    lockLore:
+      - "<yellow>You can use this lock to lock any container or openable block"
+  lockPick:
+    lockPickName: "<gray>Lockpick"
+    lockPickLore:
+      - "<gray>Open every lock..."
+      - "<gray>If you know how to do that..."
+message:
+  objectLocked: "<green>Object is now locked. Use received key to open it"
+  cantLock: "<red>This object is already locked"
+  cantUnlock: "<red>You need to use key to unlock this object"
+  cantBreak: "<red>You need to have a key in your inventory to broke this object"
+
