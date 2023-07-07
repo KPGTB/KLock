@@ -19,7 +19,7 @@ public class KeyItem extends KItem {
     public KeyItem(ToolsObjectWrapper wrapper, String fullItemTag) {
         super(wrapper, fullItemTag);
         this.wrapper = wrapper;
-        this.keyIdKey = new NamespacedKey(wrapper.getPlugin(),"key");
+        this.keyIdKey = new NamespacedKey(wrapper.getTag(),"key");
     }
 
     @Override

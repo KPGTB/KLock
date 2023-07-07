@@ -3,7 +3,6 @@ item:
     keyName: "<gold>Key"
     keyLoreAssigned:
       - "<yellow>This key is assigned to object"
-      - "<yellow>Location: <location>"
     keyLoreNotAssigned:
       - "<yellow>You can assign this key to new lock"
   universalKey:
@@ -24,4 +23,5 @@ message:
   cantLock: "<red>This object is already locked"
   cantUnlock: "<red>You need to use key to unlock this object"
   cantBreak: "<red>You need to have a key in your inventory to broke this object"
+  lockpickFailed: "<red>Your lockpick has been broken"
 
