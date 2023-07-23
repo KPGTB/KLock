@@ -37,20 +37,20 @@ public final class KLock extends JavaPlugin {
 
         {
             // GUI
-            resourcePack.registerCustomModelData(packageUtil.getTag(), 999, "gui", getResource("txt/gui.png"), Material.IRON_NUGGET);
-            resourcePack.registerCustomModelData(packageUtil.getTag(), 1000, "guilocknotopen", getResource("txt/guiLockNotOpen.png"), Material.IRON_NUGGET);
-            resourcePack.registerCustomModelData(packageUtil.getTag(), 1001, "guilockopendown", getResource("txt/guiLockOpenDown.png"), Material.IRON_NUGGET);
-            resourcePack.registerCustomModelData(packageUtil.getTag(), 1002, "guilockopenup", getResource("txt/guiLockOpenUp.png"), Material.IRON_NUGGET);
-            resourcePack.registerCustomModelData(packageUtil.getTag(), 1003, "guilockready", getResource("txt/guiLockReady.png"), Material.IRON_NUGGET);
+            resourcePack.registerCustomChar(packageUtil.getTag(), "\uE128", "gui.png", getResource("txt/gui.png"), 126,13,176);
+            resourcePack.registerCustomModelData(packageUtil.getTag(), 1000, "guilocknotopen.png", getResource("txt/guiLockNotOpen.png"), Material.IRON_NUGGET);
+            resourcePack.registerCustomModelData(packageUtil.getTag(), 1001, "guilockopendown.png", getResource("txt/guiLockOpenDown.png"), Material.IRON_NUGGET);
+            resourcePack.registerCustomModelData(packageUtil.getTag(), 1002, "guilockopenup.png", getResource("txt/guiLockOpenUp.png"), Material.IRON_NUGGET);
+            resourcePack.registerCustomModelData(packageUtil.getTag(), 1003, "guilockready.png", getResource("txt/guiLockReady.png"), Material.IRON_NUGGET);
 
             // GUI Buttons
-            resourcePack.registerCustomModelData(packageUtil.getTag(), 1004, "guilockpick", getResource("txt/guiLockpick.png"), Material.IRON_NUGGET);
-            resourcePack.registerCustomModelData(packageUtil.getTag(), 1005, "guiunlock", getResource("txt/guiUnlock.png"), Material.IRON_NUGGET);
+            resourcePack.registerCustomModelData(packageUtil.getTag(), 1004, "guilockpick.png", getResource("txt/guiLockpick.png"), Material.IRON_NUGGET);
+            resourcePack.registerCustomModelData(packageUtil.getTag(), 1005, "guiunlock.png", getResource("txt/guiUnlock.png"), Material.IRON_NUGGET);
 
             // Items
-            resourcePack.registerCustomModelData(packageUtil.getTag(), 1006, "key", getResource("txt/key.png"), Material.IRON_NUGGET);
-            resourcePack.registerCustomModelData(packageUtil.getTag(), 1007, "lock", getResource("txt/lock.png"), Material.IRON_NUGGET);
-            resourcePack.registerCustomModelData(packageUtil.getTag(), 1008, "lockpick", getResource("txt/lockpick.png"), Material.IRON_NUGGET);
+            resourcePack.registerCustomModelData(packageUtil.getTag(), 1006, "key.png", getResource("txt/key.png"), Material.IRON_NUGGET);
+            resourcePack.registerCustomModelData(packageUtil.getTag(), 1007, "lock.png", getResource("txt/lock.png"), Material.IRON_NUGGET);
+            resourcePack.registerCustomModelData(packageUtil.getTag(), 1008, "lockpick.png", getResource("txt/lockpick.png"), Material.IRON_NUGGET);
         }
 
         ListenerManager listener = new ListenerManager(wrapper,getFile());

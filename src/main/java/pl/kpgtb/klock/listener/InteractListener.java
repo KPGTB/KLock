@@ -18,6 +18,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import pl.kpgtb.klock.data.LockedBlock;
+import pl.kpgtb.klock.item.LockPickItem;
 
 import java.sql.SQLException;
 
@@ -67,8 +68,10 @@ public class InteractListener extends KListener {
             return;
         }
 
-        wrapper.getLanguageManager().getComponent(LanguageLevel.PLUGIN, "cantBreak")
-                .forEach(audience::sendMessage);
+        if(!wrapper.getItemManager().getCustomItem(wrapper.getTag(), LockPickItem.class).isSimilar(is)) {
+            wrapper.getLanguageManager().getComponent(LanguageLevel.PLUGIN, "cantBreak")
+                    .forEach(audience::sendMessage);
+        }
         event.setCancelled(true);
     }
 }
