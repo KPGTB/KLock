@@ -67,7 +67,14 @@ public class LockPickGUI extends KGui {
     public void prepareGui() {
         resetContainers();
 
-        GuiContainer manageContainer = new GuiContainer(this, 6,0,2,6);
+        GuiContainer manageContainer = new GuiContainer(this, 5,0,3,6);
+
+
+        GuiItem info = new GuiItem(new ItemBuilder(Material.IRON_NUGGET)
+                .displayname(wrapper.getLanguageManager().getSingleString(LanguageLevel.PLUGIN, "infoGuiName"))
+                .lore(wrapper.getLanguageManager().getString(LanguageLevel.PLUGIN, "infoGuiLore"))
+                .model(1009));
+        manageContainer.setItem(0,0,info);
 
         GuiItem lockPick = new GuiItem(new ItemBuilder(Material.IRON_NUGGET)
                 .displayname(wrapper.getLanguageManager().getSingleString(LanguageLevel.PLUGIN, "lockPickGuiItemName"))
@@ -77,7 +84,7 @@ public class LockPickGUI extends KGui {
             this.y = Math.min(5,this.y+1);
             prepareGui();
         });
-        manageContainer.setItem(0,1,lockPick);
+        manageContainer.setItem(1,0,lockPick);
 
         GuiItem unlock = new GuiItem(new ItemBuilder(Material.IRON_NUGGET)
                 .displayname(wrapper.getLanguageManager().getSingleString(LanguageLevel.PLUGIN, "unlockGuiItemName"))
@@ -106,14 +113,9 @@ public class LockPickGUI extends KGui {
 
             prepareGui();
         });
-        manageContainer.setItem(1,1,unlock);
+        manageContainer.setItem(2,0,unlock);
 
-        GuiItem info = new GuiItem(new ItemBuilder(Material.EMERALD)
-                .displayname(wrapper.getLanguageManager().getSingleString(LanguageLevel.PLUGIN, "infoGuiName"))
-                .lore(wrapper.getLanguageManager().getString(LanguageLevel.PLUGIN, "infoGuiLore")));
-        manageContainer.setItem(0,4,info);
-
-        manageContainer.setItem(1,4, CloseItem.get(wrapper));
+        manageContainer.setItem(2,5, CloseItem.get(wrapper));
 
         addContainer(manageContainer);
 

@@ -24,7 +24,10 @@ gui:
   unlockGuiItemName: "<dark_green><b>Unlock"
   infoGuiName: "<dark_green><b>Game Description"
   infoGuiLore:
-    - "<green><i>WIP"
+    - "<green><i>Use lockpick button to make current object go up"
+    - "<green><i>If object change color to green, click unlock button"
+    - "<green><i>You will win if you open unlock every object"
+    - "<green><i>You will lose if you fail while unlocking first object"
   unlocked: "<green>Lock has been destroyed"
   failed: "<red>Failed"
 message:

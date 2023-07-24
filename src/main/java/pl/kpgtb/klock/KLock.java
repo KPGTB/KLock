@@ -49,6 +49,7 @@ public final class KLock extends JavaPlugin {
             resourcePack.registerCustomModelData(packageUtil.getTag(), 1001, "guilockopendown.png", getResource("txt/guiLockOpenDown.png"), Material.IRON_NUGGET);
             resourcePack.registerCustomModelData(packageUtil.getTag(), 1002, "guilockopenup.png", getResource("txt/guiLockOpenUp.png"), Material.IRON_NUGGET);
             resourcePack.registerCustomModelData(packageUtil.getTag(), 1003, "guilockready.png", getResource("txt/guiLockReady.png"), Material.IRON_NUGGET);
+            resourcePack.registerCustomModelData(packageUtil.getTag(), 1009, "guiinfo.png", getResource("txt/guiInfo.png"), Material.IRON_NUGGET);
 
             // GUI Buttons
             resourcePack.registerCustomModelData(packageUtil.getTag(), 1004, "guilockpick.png", getResource("txt/guiLockpick.png"), Material.IRON_NUGGET);
