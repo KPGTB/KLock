@@ -11,6 +11,9 @@ public class LockedBlock {
     @DatabaseField
     private int key;
 
+    public LockedBlock() {
+    }
+
     public LockedBlock(Location location, int key) {
         this.location = location;
         this.key = key;

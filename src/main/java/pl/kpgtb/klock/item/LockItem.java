@@ -101,5 +101,7 @@ public class LockItem extends KItem {
         ItemUtil.giveItemToPlayer(player,key);
         wrapper.getLanguageManager().getComponent(LanguageLevel.PLUGIN, "objectLocked")
                 .forEach(audience::sendMessage);
+
+        event.setCancelled(true);
     }
 }

@@ -20,17 +20,9 @@ import java.util.Optional;
 public class KeyUtil {
 
     public static int getNextKeyId(ToolsObjectWrapper wrapper) {
-        Dao<LockedBlock, Location> blocksDAO = wrapper.getDataManager().getDao(LockedBlock.class, Location.class);
-        Optional<LockedBlock> lastKey;
-        try {
-            lastKey = blocksDAO.queryBuilder()
-                    .orderBy("key", false)
-                    .limit(1L)
-                    .query().stream().findFirst();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return lastKey.map(lockedBlock -> lockedBlock.getKey() + 1).orElse(0);
+        int nextKey = wrapper.getCacheManager().getServerDataOr(wrapper.getTag(), "next_key", -1) + 1;
+        wrapper.getCacheManager().setServerData(wrapper.getTag(), "next_key", nextKey);
+        return nextKey;
     }
 
     public static List<Location> getAllKeyLocations(Block block) {
@@ -58,7 +50,7 @@ public class KeyUtil {
 
         if(block.getType().equals(Material.CHEST)) {
             Chest chest = (Chest) state;
-            Inventory inv = chest.getBlockInventory();
+            Inventory inv = chest.getInventory();
             if(inv instanceof DoubleChestInventory) {
                 DoubleChestInventory doubleChestInventory = (DoubleChestInventory) inv;
 

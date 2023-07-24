@@ -1,4 +1,5 @@
 pl\kpgtb\klock\listener\InteractListener.class
+pl\kpgtb\klock\command\ResetKeyCommand.class
 pl\kpgtb\klock\gui\LockPickGUI$IResponse.class
 pl\kpgtb\klock\listener\BreakListener.class
 pl\kpgtb\klock\recipe\LockRecipe.class

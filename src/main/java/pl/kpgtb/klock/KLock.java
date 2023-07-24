@@ -1,10 +1,15 @@
 package pl.kpgtb.klock;
 
+import com.github.kpgtb.ktools.manager.command.CommandManager;
 import com.github.kpgtb.ktools.manager.data.DataManager;
 import com.github.kpgtb.ktools.manager.item.ItemManager;
 import com.github.kpgtb.ktools.manager.listener.ListenerManager;
 import com.github.kpgtb.ktools.manager.recipe.RecipeManager;
 import com.github.kpgtb.ktools.manager.resourcepack.ResourcePackManager;
+import com.github.kpgtb.ktools.manager.updater.IUpdater;
+import com.github.kpgtb.ktools.manager.updater.SpigotUpdater;
+import com.github.kpgtb.ktools.manager.updater.UpdaterManager;
+import com.github.kpgtb.ktools.util.bstats.Metrics;
 import com.github.kpgtb.ktools.util.file.PackageUtil;
 import com.github.kpgtb.ktools.util.wrapper.ToolsInitializer;
 import com.github.kpgtb.ktools.util.wrapper.ToolsObjectWrapper;
@@ -18,6 +23,7 @@ public final class KLock extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        saveDefaultConfig();
         ToolsObjectWrapper wrapper = new ToolsObjectWrapper(new ToolsInitializer(this).prepareLanguage(getConfig().getString("lang"), "en"));
         adventure = wrapper.getAdventure();
         PackageUtil packageUtil = wrapper.getPackageUtil();
@@ -35,6 +41,7 @@ public final class KLock extends JavaPlugin {
         resourcePack.setRequired(true);
         resourcePack.registerPlugin(packageUtil.getTag(),getDescription().getVersion());
 
+        wrapper.getUiManager().setRequired(true);
         {
             // GUI
             resourcePack.registerCustomChar(packageUtil.getTag(), "\uE128", "gui.png", getResource("txt/gui.png"), 126,13,176);
@@ -55,6 +62,14 @@ public final class KLock extends JavaPlugin {
 
         ListenerManager listener = new ListenerManager(wrapper,getFile());
         listener.registerListeners(packageUtil.get("listener"));
+
+        CommandManager command = new CommandManager(wrapper,getFile(),wrapper.getTag());
+        command.registerCommands(packageUtil.get("command"));
+
+        UpdaterManager updater = new UpdaterManager(getDescription(), new SpigotUpdater(""), wrapper.getDebugManager());
+        updater.checkUpdate();
+
+        new Metrics(this, 19220);
     }
 
     @Override

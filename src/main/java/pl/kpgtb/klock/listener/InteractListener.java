@@ -13,12 +13,14 @@ import org.bukkit.block.Container;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.Openable;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import pl.kpgtb.klock.data.LockedBlock;
 import pl.kpgtb.klock.item.LockPickItem;
+import pl.kpgtb.klock.item.UniversalKeyItem;
 
 import java.sql.SQLException;
 
@@ -34,6 +36,7 @@ public class InteractListener extends KListener {
 
     @EventHandler
     public void onInteract(PlayerInteractEvent event) throws SQLException {
+        if(event.useInteractedBlock().equals(Event.Result.DENY)) return;
         Player player = event.getPlayer();
         Audience audience = wrapper.getAdventure().player(player);
         if(!event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
@@ -64,12 +67,12 @@ public class InteractListener extends KListener {
 
         int keyId = wrapper.getCacheManager().getDataOr(is, wrapper.getTag(), "key", -1);
 
-        if(keyId == lockedBlock.getKey()) {
+        if(keyId == lockedBlock.getKey() || wrapper.getItemManager().getCustomItem(wrapper.getTag(), UniversalKeyItem.class).isSimilar(is)) {
             return;
         }
 
         if(!wrapper.getItemManager().getCustomItem(wrapper.getTag(), LockPickItem.class).isSimilar(is)) {
-            wrapper.getLanguageManager().getComponent(LanguageLevel.PLUGIN, "cantBreak")
+            wrapper.getLanguageManager().getComponent(LanguageLevel.PLUGIN, "cantUnlock")
                     .forEach(audience::sendMessage);
         }
         event.setCancelled(true);

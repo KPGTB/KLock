@@ -22,6 +22,7 @@ public class LockPickGUI extends KGui {
     private int action;
     private int y;
     private int expectedY;
+    private boolean used;
 
     private final BukkitTask gameRunnable;
     private boolean responded;
@@ -37,12 +38,17 @@ public class LockPickGUI extends KGui {
         this.response = response;
         this.responded = false;
 
+        this.used = false;
         this.action = 0;
         this.y = 0;
         this.expectedY = new Random().nextInt(5) + 1;
         this.gameRunnable = new BukkitRunnable() {
             @Override
             public void run() {
+                if(used) {
+                    used = false;
+                    return;
+                }
                 y = Math.max(0, y-1);
                 prepareGui();
             }
@@ -67,6 +73,7 @@ public class LockPickGUI extends KGui {
                 .displayname(wrapper.getLanguageManager().getSingleString(LanguageLevel.PLUGIN, "lockPickGuiItemName"))
                 .model(1004));
         lockPick.setClickAction((e,loc) -> {
+            used = true;
             this.y = Math.min(5,this.y+1);
             prepareGui();
         });
@@ -76,9 +83,6 @@ public class LockPickGUI extends KGui {
                 .displayname(wrapper.getLanguageManager().getSingleString(LanguageLevel.PLUGIN, "unlockGuiItemName"))
                 .model(1005));
         unlock.setClickAction((e,loc) -> {
-            this.y = 0;
-            this.expectedY = new Random().nextInt(5) + 1;
-
             if (this.y==this.expectedY) {
                 if(action >= 4) {
                     this.responded = true;
@@ -90,12 +94,15 @@ public class LockPickGUI extends KGui {
             } else {
                 if(action <= 0) {
                     this.responded = true;
-                    this.response.response(true);
+                    this.response.response(false);
                     e.getWhoClicked().closeInventory();
                     return;
                 }
                 this.action--;
             }
+
+            this.y = 0;
+            this.expectedY = new Random().nextInt(5) + 1;
 
             prepareGui();
         });
@@ -122,8 +129,8 @@ public class LockPickGUI extends KGui {
                 continue;
             }
 
-            GuiItem point = new GuiItem(new ItemBuilder(Material.IRON_NUGGET, " ").model(this.y == this.expectedY ? 1003 : 1000));
-            gameContainer.setItem(x, 5-this.y, point);
+            GuiItem point = new GuiItem(new ItemBuilder(Material.IRON_NUGGET, " ").model(this.y == this.expectedY && this.action == x ? 1003 : 1000));
+            gameContainer.setItem(x, this.action == x ? 5-this.y : 5, point);
         }
 
         addContainer(gameContainer);

@@ -20,6 +20,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import pl.kpgtb.klock.data.LockedBlock;
+import pl.kpgtb.klock.item.UniversalKeyItem;
 import pl.kpgtb.klock.util.KeyUtil;
 
 import java.sql.SQLException;
@@ -62,7 +63,7 @@ public class BreakListener extends KListener {
                 continue;
             }
             int keyId = wrapper.getCacheManager().getDataOr(is, wrapper.getTag(), "key", -1);
-            if(keyId == lockedBlock.getKey()) {
+            if(keyId == lockedBlock.getKey() || is.isSimilar(wrapper.getItemManager().getCustomItem(wrapper.getTag(), UniversalKeyItem.class))) {
                 key = is;
                 break;
             }
@@ -78,7 +79,5 @@ public class BreakListener extends KListener {
         DeleteBuilder<LockedBlock, Location> deleteBuilder = blocksDAO.deleteBuilder();
         deleteBuilder.where().eq("key", lockedBlock.getKey());
         deleteBuilder.delete();
-
-        key.setAmount(0);
     }
 }
