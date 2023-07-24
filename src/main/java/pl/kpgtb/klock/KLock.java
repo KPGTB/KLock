@@ -40,8 +40,8 @@ public final class KLock extends JavaPlugin {
         ResourcePackManager resourcePack = wrapper.getResourcePackManager();
         resourcePack.setRequired(true);
         resourcePack.registerPlugin(packageUtil.getTag(),getDescription().getVersion());
+        resourcePack.registerSpaces();
 
-        wrapper.getUiManager().setRequired(true);
         {
             // GUI
             resourcePack.registerCustomChar(packageUtil.getTag(), "\uE128", "gui.png", getResource("txt/gui.png"), 126,13,176);
