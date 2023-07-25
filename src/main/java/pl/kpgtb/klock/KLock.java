@@ -67,7 +67,7 @@ public final class KLock extends JavaPlugin {
         CommandManager command = new CommandManager(wrapper,getFile(),wrapper.getTag());
         command.registerCommands(packageUtil.get("command"));
 
-        UpdaterManager updater = new UpdaterManager(getDescription(), new SpigotUpdater(""), wrapper.getDebugManager());
+        UpdaterManager updater = new UpdaterManager(getDescription(), new SpigotUpdater("111501"), wrapper.getDebugManager());
         updater.checkUpdate();
 
         new Metrics(this, 19220);

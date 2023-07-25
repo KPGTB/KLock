@@ -14,7 +14,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import pl.kpgtb.klock.data.LockedBlock;
 import pl.kpgtb.klock.item.EmptyKeyItem;
-import pl.kpgtb.klock.item.LockPickItem;
 
 import java.sql.SQLException;
 

@@ -4,5 +4,5 @@ main: pl.kpgtb.klock.KLock
 api-version: 1.14
 depend: [KTools]
 authors: [KPG_TB]
-description: An advanced locks system
+description: An advanced locks system with modern UI
 website: kpgtb.pl

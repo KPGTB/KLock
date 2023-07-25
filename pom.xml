@@ -11,7 +11,7 @@
 
     <name>KLock</name>
 
-    <description>An advanced locks system</description>
+    <description>An advanced locks system with modern UI</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
