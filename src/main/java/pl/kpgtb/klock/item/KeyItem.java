@@ -38,6 +38,6 @@ public class KeyItem extends KItem {
             return false;
         }
 
-        return ItemUtil.compareWithoutPDC(getItem(),is, new ArrayList<>(Arrays.asList(this.keyIdKey)));
+        return ItemUtil.compareWithoutPDC(getItem(),is, Arrays.asList(this.keyIdKey));
     }
 }
